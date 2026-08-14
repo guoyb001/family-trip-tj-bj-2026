@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>京津家庭游 · 2026年8月17-23日 · 行程规划</title>
+<style>
+  :root {
+    --ink: #1a2332;
+    --ink-soft: #4a5568;
+    --paper: #faf7f2;
+    --paper-warm: #f5efe4;
+    --accent: #c8553d;
+    --accent-soft: #e8997f;
+    --gold: #d4a574;
+    --line: #e6dfd1;
+    --shadow: 0 2px 12px rgba(26,35,50,0.06);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Songti SC", "STSong", "Source Han Serif SC", "Noto Serif CJK SC", serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 24px; }
+
+  /* Header */
+  header {
+    background: linear-gradient(135deg, #c8553d 0%, #d4a574 100%);
+    color: #fff;
+    padding: 48px 32px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+  header .subtitle {
+    font-size: 18px;
+    opacity: 0.95;
+    margin-bottom: 24px;
+  }
+  .trip-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+  }
+  .meta-item .label { font-size: 13px; opacity: 0.85; margin-bottom: 4px; }
+  .meta-item .value { font-size: 16px; font-weight: 600; }
+
+  /* Sections */
+  section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+  }
+  section h2 {
+    font-size: 24px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  section h2 .num {
+    background: var(--accent);
+    color: #fff;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  /* Day cards */
+  .day-card {
+    border-left: 4px solid var(--accent);
+    padding: 20px 0 20px 24px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .day-card:last-child { margin-bottom: 0; }
+  .day-card::before {
+    content: "";
+    position: absolute;
+    left: -7px; top: 26px;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .day-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .day-date {
+    background: var(--paper-warm);
+    color: var(--ink);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid var(--line);
+  }
+  .day-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .day-tag {
+    background: var(--accent-soft);
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+
+  .schedule { list-style: none; }
+  .schedule li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--line);
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .schedule li:last-child { border-bottom: none; }
+  .time {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 14px;
+    padding-top: 2px;
+  }
+  .activity strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .activity .desc {
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-top: 2px;
+  }
+  .activity .note {
+    display: inline-block;
+    background: var(--paper-warm);
+    color: var(--ink-soft);
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-right: 4px;
+  }
+  .activity .note.important {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  /* Hotel cards */
+  .hotel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .hotel-card {
+    background: var(--paper-warm);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+  }
+  .hotel-card h3 {
+    color: var(--accent);
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .hotel-card .info { font-size: 14px; color: var(--ink-soft); margin-bottom: 6px; }
+  .hotel-card .info strong { color: var(--ink); }
+
+  /* Tips */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .tip-card {
+    background: var(--paper-warm);
+    padding: 16px;
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+  }
+  .tip-card h4 {
+    color: var(--ink);
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  .tip-card p { font-size: 13px; color: var(--ink-soft); }
+
+  /* Checklist */
+  .checklist { columns: 2; column-gap: 32px; }
+  .checklist li {
+    list-style: none;
+    padding: 6px 0;
+    break-inside: avoid;
+    position: relative;
+    padding-left: 24px;
+    font-size: 14px;
+  }
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* Budget table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  th {
+    background: var(--paper-warm);
+    color: var(--ink);
+    font-weight: 700;
+  }
+  td.amount { text-align: right; font-weight: 600; color: var(--accent); }
+  tfoot td {
+    font-weight: 700;
+    border-top: 2px solid var(--accent);
+    border-bottom: none;
+  }
+
+  /* Edit note */
+  .edit-banner {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 1px solid #f59e0b;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: #78350f;
+  }
+  .edit-banner strong { color: #92400e; }
+
+  footer {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 13px;
+    padding: 32px 16px;
+  }
+
+  @media (max-width: 640px) {
+    header { padding: 32px 20px; }
+    header h1 { font-size: 26px; }
+    section { padding: 20px; }
+    .schedule li { grid-template-columns: 70px 1fr; gap: 10px; }
+    .checklist { columns: 1; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .container { max-width: 100%; padding: 12px; }
+    section { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
+    .edit-banner { background: #fff8e1; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>京津家庭游 · 七日行</h1>
+    <div class="subtitle">深圳 ✈ 天津 → 北京 ✈ 深圳 · 一家四口的慢节奏旅程</div>
+    <div class="trip-meta">
+      <div class="meta-item">
+        <div class="label">📅 出行日期</div>
+        <div class="value">2026.08.17 – 08.23</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">⏱ 行程天数</div>
+        <div class="value">7天6晚</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">👨‍👩‍👧‍👦 出行人员</div>
+        <div class="value">夫妻 + 1小孩 + 1老人</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">🏨 住宿</div>
+        <div class="value">2 间 × 6 晚</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="edit-banner">
+    <strong>📝 协作说明：</strong> 本行程为初版规划，可由家人共享后二次调整。建议复制到腾讯文档 / 飞书 / Notion 等协同工具进行修改，所有改动会自动同步给所有人。
+  </div>
+
+  <!-- 行程总览 -->
+  <section>
+    <h2><span class="num">一</span>行程总览</h2>
+    <table>
+      <thead>
+        <tr><th>日期</th><th>星期</th><th>城市</th><th>主题</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>08.17</td><td>周一</td><td>深圳 → 天津</td><td>抵达 + 海河夜景</td></tr>
+        <tr><td>08.18</td><td>周二</td><td>天津</td><td>意式风情区 + 天津之眼</td></tr>
+        <tr><td>08.19</td><td>周三</td><td>天津</td><td>五大道 + 老味道</td></tr>
+        <tr><td>08.20</td><td>周四</td><td>天津 → 北京</td><td>高铁 + 前门探路</td></tr>
+        <tr><td>08.21</td><td>周五</td><td>北京</td><td>故宫 + 什刹海</td></tr>
+        <tr><td>08.22</td><td>周六</td><td>北京</td><td>天坛 + 颐和园</td></tr>
+        <tr><td>08.23</td><td>周日</td><td>北京 → 深圳</td><td>自由活动 + 返程</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 每日详情 -->
+  <section>
+    <h2><span class="num">二</span>每日详细安排</h2>
+
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-date">08.17 周一</span>
+        <span class="day-title">启程：深圳 → 天津</span>
+        <span class="day-tag">🚄 抵达日</span>
+      </div>
+      <ul class="schedule">
+        <li>
+          <div class="time">08:00</div>
+          <div class="activity">
+            <strong>出发前往机场</strong>
+            <div class="desc">建议提前 2 小时到机场，深圳宝安机场有老人/儿童爱心通道</div>
+            <span class="note">地铁 11 号线 / 打车约 40 分钟</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">10:00</div>
+          <div class="activity">
+            <strong>深圳宝安 → 天津滨海</strong>
+            <div class="desc">飞行约 3 小时，含 1 小时时差（北京时间相同）</div>
+            <span class="note important">提前选座靠前/靠窗</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">13:30</div>
+          <div class="activity">
+            <strong>机场 → 酒店</strong>
+            <div class="desc">天津滨海机场乘地铁 2 号线转 9 号线到小白楼站，约 50 分钟；或打车 30 分钟（约 80 元）</div>
+            <span class="note">打车更快，老人小孩首选</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">15:00</div>
+          <div class="activity">
+            <strong>入住亚朵轻居（小白楼）</strong>
+            <div class="desc">办理入住休整，洗漱、午睡片刻适应</div>
+          </div>
+        </li>
+        <li>
+          <div class="time">17:30</div>
+          <div class="activity">
+            <strong>海河夜景散步 + 晚餐</strong>
+            <div class="desc">酒店步行至海河边 10 分钟，欣赏小白楼商务区与解放北路万国建筑夜景</div>
+            <span class="note">晚餐推荐：狗不理（山东路总店）或起士林西餐厅</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-date">08.18 周二</span>
+        <span class="day-title">意式风情区 + 天津之眼</span>
+        <span class="day-tag">🏛 经典打卡</span>
+      </div>
+      <ul class="schedule">
+        <li>
+          <div class="time">08:30</div>
+          <div class="activity">
+            <strong>酒店早餐</strong>
+            <div class="desc">亚朵轻居含早，养足精神</div>
+          </div>
+        </li>
+        <li>
+          <div class="time">09:30</div>
+          <div class="activity">
+            <strong>意式风情区</strong>
+            <div class="desc">打车 15 分钟到达。逛梁启超故居、曹禺故居、意大利兵营旧址，看欧式建筑群</div>
+            <span class="note">耗时 2-3 小时，老人可租电瓶车</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">12:30</div>
+          <div class="activity">
+            <strong>午餐</strong>
+            <div class="desc">意式风情区内或附近的天津菜，推荐：耳朵眼炸糕、煎饼果子、罾蹦鲤鱼</div>
+          </div>
+        </li>
+        <li>
+          <div class="time">14:30</div>
+          <div class="activity">
+            <strong>回酒店午休</strong>
+            <div class="desc">8月天津闷热，老人小孩中午必须休息 1.5 小时</div>
+            <span class="note important">避暑关键时段</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">16:30</div>
+          <div class="activity">
+            <strong>古文化街 + 天后宫</strong>
+            <div class="desc">打车 10 分钟。欣赏津门故里牌坊、杨柳青年画、泥人张</div>
+          </div>
+        </li>
+        <li>
+          <div class="time">18:30</div>
+          <div class="activity">
+            <strong>海河夜游船 + 天津之眼</strong>
+            <div class="desc">古文化街码头登船，40 分钟一程；下船后步行至天津之眼摩天轮（小孩最爱）</div>
+            <span class="note">摩天轮 70 元/人，提前买票</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-date">08.19 周三</span>
+        <span class="day-title">五大道 + 老城味道</span>
+        <span class="day-tag">🏘 慢游</span>
+      </div>
+      <ul class="schedule">
+        <li>
+          <div class="time">09:00</div>
+          <div class="activity">
+            <strong>五大道</strong>
+            <div class="desc">酒店步行 5 分钟即达。租电瓶车游览 1.5 小时，看小洋楼建筑群、名人故居（张学良、顾维钧等）</div>
+            <span class="note">电瓶车 80 元/小时，老人小孩不累</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">11:30</div>
+          <div class="activity">
+            <strong>民园广场 + 午餐</strong>
+            <div class="desc">五大道核心区域，拍照打卡圣地；附近餐厅众多</div>
+            <span class="note">推荐：成桂西餐厅（百年老店）或桂发祥麻花</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">13:30</div>
+          <div class="activity">
+            <strong>回酒店午休</strong>
+          </div>
+        </li>
+        <li>
+          <div class="time">15:30</div>
+          <div class="activity">
+            <strong>瓷房子（赤峰道）</strong>
+            <div class="desc">打车 10 分钟。世界奇观——法式小洋楼镶满古瓷片</div>
+            <span class="note">门票 50 元，1 小时逛完</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">17:00</div>
+          <div class="activity">
+            <strong>南市食品街 / 西北角回民街</strong>
+            <div class="desc">挑天津老味道伴手礼：麻花、耳朵眼炸糕、熟梨糕、糖堆儿</div>
+          </div>
+        </li>
+        <li>
+          <div class="time">19:00</div>
+          <div class="activity">
+            <strong>晚餐：天津菜</strong>
+            <div class="desc">推荐：八珍豆腐、锅塌里脊、老爆三、清炒虾仁</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-date">08.20 周四</span>
+        <span class="day-title">天津 → 北京</span>
+        <span class="day-tag">🚄 转场</span>
+      </div>
+      <ul class="schedule">
+        <li>
+          <div class="time">08:30</div>
+          <div class="activity">
+            <strong>退房 + 寄存行李</strong>
+            <div class="desc">天津站可提前寄行李，或回酒店寄存</div>
+          </div>
+        </li>
+        <li>
+          <div class="time">09:00</div>
+          <div class="activity">
+            <strong>天津博物馆（可选）</strong>
+            <div class="desc">打车 15 分钟。看镇馆之宝：西周太保鼎、宋画范宽《雪景寒林图》</div>
+            <span class="note">免费但需预约，1.5 小时</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">12:00</div>
+          <div class="activity">
+            <strong>午餐 + 取行李</strong>
+          </div>
+        </li>
+        <li>
+          <div class="time">13:30</div>
+          <div class="activity">
+            <strong>天津站 → 北京南站</strong>
+            <div class="desc">京津城际/京沪高铁，约 30-55 分钟；每 10-15 分钟一班</div>
+            <span class="note important">提前 30 分钟到站，过安检</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">15:00</div>
+          <div class="activity">
+            <strong>入住前门大栅栏亚朵酒店</strong>
+            <div class="desc">北京南站地铁 4 号线 → 宣武门换 2 号线 → 前门站，约 30 分钟；打车 25 分钟约 50 元</div>
+          </div>
+        </li>
+        <li>
+          <div class="time">16:30</div>
+          <div class="activity">
+            <strong>前门大街 + 大栅栏</strong>
+            <div class="desc">步行即达。看老字号：瑞蚨祥、内联升、张一元、张小泉；尝老北京酸奶、爆肚、糖葫芦</div>
+            <span class="note">耗时 2-3 小时</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">19:30</div>
+          <div class="activity">
+            <strong>晚餐</strong>
+            <div class="desc">推荐：四季民福烤鸭（前门店，需排号）或都一处烧麦</div>
+            <span class="note important">烤鸭需提前网上取号</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-date">08.21 周五</span>
+        <span class="day-title">故宫 + 什刹海</span>
+        <span class="day-tag">🏯 帝都核心</span>
+      </div>
+      <ul class="schedule">
+        <li>
+          <div class="time">08:00</div>
+          <div class="activity">
+            <strong>早餐后步行至天安门</strong>
+            <div class="desc">酒店步行 15 分钟到天安门东/西地铁站；或打车 5 分钟</div>
+          </div>
+        </li>
+        <li>
+          <div class="time">08:30</div>
+          <div class="activity">
+            <strong>天安门广场 + 国家博物馆</strong>
+            <div class="desc">看升旗（8月约 5:30，但老人小孩建议跳过），拍照打卡</div>
+            <span class="note">升旗仪式不安排，避暑避早</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">09:00</div>
+          <div class="activity">
+            <strong>故宫博物院</strong>
+            <div class="desc">提前 7 天官网/小程序预约，成人 60 元，老人/小孩优惠。从午门进、神武门出</div>
+            <span class="note important">⚠ 必须提前预约，否则进不去</span>
+            <span class="note">租电子讲解 20 元，老人走累了可在御花园歇脚</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">13:00</div>
+          <div class="activity">
+            <strong>神武门出 → 景山公园</strong>
+            <div class="desc">景山万春亭俯瞰故宫全景（门票 2 元，超值）。看完步行至北海公园西门</div>
+          </div>
+        </li>
+        <li>
+          <div class="time">14:00</div>
+          <div class="activity">
+            <strong>午餐 + 午休</strong>
+            <div class="desc">回酒店午休；或景山附近简餐</div>
+            <span class="note important">8月正午故宫区域无遮阳，必须午休</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">16:30</div>
+          <div class="activity">
+            <strong>什刹海 + 烟袋斜街</strong>
+            <div class="desc">地铁 6 号线到北海北，步行即达。划船游什刹海（小孩最爱），逛烟袋斜街小店</div>
+            <span class="note">划船 60 元/小时，可 4 人坐</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">19:00</div>
+          <div class="activity">
+            <strong>什刹海晚餐</strong>
+            <div class="desc">推荐：护国寺小吃（豆汁、焦圈、驴打滚、面茶）体验老北京味</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-date">08.22 周六</span>
+        <span class="day-title">天坛 + 颐和园</span>
+        <span class="day-tag">🌳 园林日</span>
+      </div>
+      <ul class="schedule">
+        <li>
+          <div class="time">07:30</div>
+          <div class="activity">
+            <strong>早餐后出发天坛</strong>
+            <div class="desc">地铁 2 号线前门 → 崇文门换 5 号线 → 天坛东门，约 30 分钟</div>
+          </div>
+        </li>
+        <li>
+          <div class="time">08:30</div>
+          <div class="activity">
+            <strong>天坛公园</strong>
+            <div class="desc">祈年殿、回音壁、圜丘坛三大必看。清晨凉快，老人小孩舒适</div>
+            <span class="note">联票 34 元，2-3 小时</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">12:00</div>
+          <div class="activity">
+            <strong>回酒店午休 + 午餐</strong>
+          </div>
+        </li>
+        <li>
+          <div class="time">15:00</div>
+          <div class="activity">
+            <strong>颐和园</strong>
+            <div class="desc">地铁 4 号线转 16 号线，约 50 分钟。推荐路线：东宫门入 → 仁寿殿 → 长廊 → 排云殿 → 佛香阁 → 石舫 → 北宫门出</div>
+            <span class="note important">⚠ 颐和园很大，可租电瓶车（老人）或游船</span>
+            <span class="note">联票 60 元，3 小时</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">19:00</div>
+          <div class="activity">
+            <strong>王府井大街晚餐 + 购物</strong>
+            <div class="desc">地铁 16 号线转 1 号线。逛街+伴手礼采购：王府井书店、工美大厦</div>
+            <span class="note">晚餐推荐：东来顺涮羊肉</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-date">08.23 周日</span>
+        <span class="day-title">自由活动 + 返程</span>
+        <span class="day-tag">✈ 归程</span>
+      </div>
+      <ul class="schedule">
+        <li>
+          <div class="time">08:00</div>
+          <div class="activity">
+            <strong>酒店早餐 + 打包</strong>
+          </div>
+        </li>
+        <li>
+          <div class="time">09:30</div>
+          <div class="activity">
+            <strong>自由活动 / 最后采购</strong>
+            <div class="desc">选项 A：前门大街补买伴手礼；选项 B：国家博物馆（提前预约）；选项 C：天坛公园补逛</div>
+          </div>
+        </li>
+        <li>
+          <div class="time">12:00</div>
+          <div class="activity">
+            <strong>退房 + 午餐</strong>
+          </div>
+        </li>
+        <li>
+          <div class="time">14:00</div>
+          <div class="activity">
+            <strong>出发前往机场/高铁站</strong>
+            <div class="desc">北京南站地铁约 30 分钟；或首都机场打车 1 小时、大兴机场打车 1.5 小时</div>
+            <span class="note important">飞机建议提前 2.5 小时到机场</span>
+          </div>
+        </li>
+        <li>
+          <div class="time">16:30</div>
+          <div class="activity">
+            <strong>北京 → 深圳</strong>
+            <div class="desc">飞行约 3 小时</div>
+          </div>
+        </li>
+        <li>
+          <div class="time">19:30</div>
+          <div class="activity">
+            <strong>抵达深圳宝安</strong>
+            <div class="desc">行程结束，回到温暖的家 🏠</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 住宿 -->
+  <section>
+    <h2><span class="num">三</span>住宿信息</h2>
+    <div class="hotel-grid">
+      <div class="hotel-card">
+        <h3>🏨 天津 · 亚朵轻居酒店</h3>
+        <div class="info"><strong>位置：</strong>五大道小白楼商圈</div>
+        <div class="info"><strong>房型：</strong>2 间 × 3 晚（8.17–8.20）</div>
+        <div class="info"><strong>周边：</strong>海河、五大道、地铁 1/13 号线小白楼站步行 5 分钟</div>
+        <div class="info"><strong>特色：</strong>亚朵系性价比之选，含早餐，年轻设计风</div>
+      </div>
+      <div class="hotel-card">
+        <h3>🏨 北京 · 前门大栅栏亚朵酒店</h3>
+        <div class="info"><strong>位置：</strong>前门大栅栏历史文化区</div>
+        <div class="info"><strong>房型：</strong>2 间 × 3 晚（8.20–8.23）</div>
+        <div class="info"><strong>周边：</strong>天安门、前门大街、地铁 2 号线前门站步行 3 分钟</div>
+        <div class="info"><strong>特色：</strong>位置无敌，去故宫、天坛、颐和园都方便，含早餐</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 重要预约 -->
+  <section>
+    <h2><span class="num">四</span>⚠ 提前预约清单</h2>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h4>🎫 故宫（8.21）</h4>
+        <p>提前 7 天（8.14）0 点放票，"故宫博物院"小程序预约。老人小孩也需实名预约。</p>
+      </div>
+      <div class="tip-card">
+        <h4>🎫 天坛（8.22）</h4>
+        <p>"天坛公园"公众号或现场购票均可，联票更划算。</p>
+      </div>
+      <div class="tip-card">
+        <h4>🎫 颐和园（8.22）</h4>
+        <p>现场购票或"畅游公园"公众号，建议买联票含苏州街。</p>
+      </div>
+      <div class="tip-card">
+        <h4>🎫 国家博物馆</h4>
+        <p>如 8.20 或 8.23 想加，提前 1-7 天预约，免费但需身份证。</p>
+      </div>
+      <div class="tip-card">
+        <h4>🚄 津京城际</h4>
+        <p>8.20 天津 → 北京，12306 提前 15 天可买，成人票 54.5 元。</p>
+      </div>
+      <div class="tip-card">
+        <h4>✈ 往返机票</h4>
+        <p>8.17 深圳-天津、8.23 北京-深圳，需尽早订（提前 30 天价格更优）。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 实用 Tips -->
+  <section>
+    <h2><span class="num">五</span>实用 Tips</h2>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h4>🌡 防暑是核心</h4>
+        <p>8 月京津 32-36°C。每天上午 9:30 前、下午 4:30 后外出，中午必须午休。必备：防晒霜 SPF50、遮阳帽、便携风扇、藿香正气水。</p>
+      </div>
+      <div class="tip-card">
+        <h4>👴 老人照顾</h4>
+        <p>景点尽量选有电瓶车/游船的；避免暴走故宫全程（中轴线+西六宫+珍宝馆）；备常用药。</p>
+      </div>
+      <div class="tip-card">
+        <h4>👶 小孩安排</h4>
+        <p>天津之眼、什刹海划船、颐和园游船是孩子最爱；带零食和水；可带小礼物奖励。</p>
+      </div>
+      <div class="tip-card">
+        <h4>💰 预算控制</h4>
+        <p>全家 4 人预算约 2.5-3 万（机票 1万 + 酒店 1万 + 餐饮交通门票 5千-1万）。</p>
+      </div>
+      <div class="tip-card">
+        <h4>📱 App 推荐</h4>
+        <p>高德地图、北京/天津地铁、12306、美团/大众点评、故宫博物院小程序。</p>
+      </div>
+      <div class="tip-card">
+        <h4>🚇 出行交通</h4>
+        <p>地铁最便宜方便，但带小孩老人打车更省心；天津/北京网约车很便捷。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 打包清单 -->
+  <section>
+    <h2><span class="num">六</span>打包清单</h2>
+    <ul class="checklist">
+      <li>身份证（4 张，全家出行必带）</li>
+      <li>户口本（小孩乘机需要）</li>
+      <li>护照（如有备用）</li>
+      <li>充电器 + 充电宝（民航限 20000mAh）</li>
+      <li>常用药：感冒、肠胃、降压（老人）、晕车药</li>
+      <li>创可贴、消毒湿巾、口罩</li>
+      <li>防晒霜 SPF50、遮阳帽</li>
+      <li>雨伞（8 月京津多雷雨）</li>
+      <li>便携风扇 / 小风扇</li>
+      <li>藿香正气水 / 十滴水</li>
+      <li>舒适的步行鞋（每天 1-2 万步）</li>
+      <li>凉鞋 / 拖鞋</li>
+      <li>薄外套（空调房冷）</li>
+      <li>小孩的玩具 / 零食</li>
+      <li>湿巾 / 纸巾</li>
+      <li>一次性雨衣</li>
+      <li>塑料袋（脏衣服、湿鞋）</li>
+      <li>小型保温杯</li>
+    </ul>
+  </section>
+
+  <!-- 预算估算 -->
+  <section>
+    <h2><span class="num">七</span>预算估算（4人总计）</h2>
+    <table>
+      <thead>
+        <tr><th>项目</th><th>说明</th><th class="amount">金额（元）</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>往返机票</td><td>深圳-天津 + 北京-深圳（4 人）</td><td class="amount">8,000 – 12,000</td></tr>
+        <tr><td>天津住宿</td><td>亚朵轻居 2 间 × 3 晚</td><td class="amount">2,400 – 3,600</td></tr>
+        <tr><td>北京住宿</td><td>亚朵 2 间 × 3 晚</td><td class="amount">3,600 – 5,400</td></tr>
+        <tr><td>京津城际</td><td>4 人单程</td><td class="amount">220</td></tr>
+        <tr><td>景点门票</td><td>故宫+天坛+颐和园+瓷房子+摩天轮等</td><td class="amount">1,500</td></tr>
+        <tr><td>市内交通</td><td>地铁+打车+网约车</td><td class="amount">1,500</td></tr>
+        <tr><td>餐饮</td><td>7 天 × 4 人 × 150 元/天</td><td class="amount">4,200</td></tr>
+        <tr><td>伴手礼</td><td>麻花、烤鸭、点心、纪念品</td><td class="amount">1,000 – 2,000</td></tr>
+        <tr><td>应急/机动</td><td>突发情况备用</td><td class="amount">2,000</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td colspan="2">合计</td><td class="amount">¥24,420 – 32,420</td></tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <footer>
+    <p>✈️ 一家人的旅行 · 慢慢走，慢慢看</p>
+    <p>行程版本：v1.0 · 最后更新：2026.07.28</p>
+    <p>本行程由家人共同协作调整，欢迎在评论/批注里提出修改建议</p>
+  </footer>
+
+</div>
+</body>
+</html>
