@@ -1,262 +1,860 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>天津家庭出行完整行程（含谦祥益相声）</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft Yahei", sans-serif;
-        }
-        body {
-            background-color: #f7f9fc;
-            color: #333;
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-        .info-card {
-            background: #fff;
-            padding:16px;
-            border-radius:10px;
-            margin-bottom:20px;
-            box-shadow: 0 1px 4px #0000001a;
-        }
-        .info-card p {
-            line-height:1.7;
-        }
-        h2 {
-            font-size:20px;
-            margin:24px 0 12px;
-            color:#2980b9;
-        }
-        h3 {
-            font-size:17px;
-            margin:16px 0 8px;
-            color:#34495e;
-        }
-        table {
-            width:100%;
-            border-collapse: collapse;
-            background:#fff;
-            border-radius:8px;
-            overflow:hidden;
-            box-shadow:0 1px 4px #00000012;
-            margin-bottom:16px;
-        }
-        th,td {
-            border:1px solid #e2e8f0;
-            padding:12px;
-            text-align:left;
-            line-height:1.6;
-        }
-        th {
-            background-color:#edf4fa;
-        }
-        ul {
-            padding-left:22px;
-            line-height:1.8;
-        }
-        .warn {
-            background:#fff3cd;
-            padding:12px 14px;
-            border-left:4px solid #ffc107;
-            border-radius:6px;
-            margin:12px 0;
-        }
-        .tip-blue{
-            background:#e8f4fc;
-            padding:12px 14px;
-            border-left:4px solid #3498db;
-            border-radius:6px;
-            margin:12px 0;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>京津六日家庭游 · 行程手册</title>
+<style>
+  :root {
+    --primary: #c8531b;
+    --primary-dark: #a0421a;
+    --accent: #2c7a7b;
+    --bg: #faf8f5;
+    --card: #ffffff;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #e8e4e0;
+    --tag-bg: #fff4ed;
+    --tag-text: #c8531b;
+    --senior: #b8860b;
+    --teen: #4a90d9;
+    --warning: #e17055;
+    --success: #00b894;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #c8531b 0%, #e8853f 50%, #f4a261 100%);
+    color: #fff;
+    padding: 50px 30px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: var(--bg);
+    clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
+  }
+  .hero h1 { font-size: 32px; margin-bottom: 8px; letter-spacing: 2px; }
+  .hero .subtitle { font-size: 16px; opacity: 0.92; margin-bottom: 6px; }
+  .hero .dates { font-size: 14px; opacity: 0.85; }
+  .hero .family-tags {
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero .family-tags span {
+    background: rgba(255,255,255,0.22);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    backdrop-filter: blur(4px);
+  }
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+  }
+  .section {
+    margin-bottom: 40px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .num {
+    background: var(--primary);
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  /* Overview cards */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .overview-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 18px;
+    border-left: 4px solid var(--accent);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .overview-card .label {
+    font-size: 12px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .overview-card .value {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .overview-card .detail {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+
+  /* Day cards */
+  .day-card {
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+  .day-header {
+    padding: 18px 22px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .day-header .left { display: flex; align-items: center; gap: 12px; }
+  .day-header .day-num {
+    background: rgba(255,255,255,0.25);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .day-header .day-title { font-size: 18px; font-weight: 600; }
+  .day-header .day-meta { font-size: 13px; opacity: 0.9; }
+  .day-header .day-route {
+    font-size: 13px;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 14px;
+  }
+  .day-1 .day-header { background: linear-gradient(135deg, #0984e3, #74b9ff); }
+  .day-2 .day-header { background: linear-gradient(135deg, #00b894, #55efc4); }
+  .day-3 .day-header { background: linear-gradient(135deg, #6c5ce7, #a29bfe); }
+  .day-4 .day-header { background: linear-gradient(135deg, #c8531b, #f0932b); }
+  .day-5 .day-header { background: linear-gradient(135deg, #d63031, #ff7675); }
+  .day-6 .day-header { background: linear-gradient(135deg, #2d3436, #636e72); }
+
+  .day-body { padding: 20px 22px; }
+  .timeline { list-style: none; position: relative; padding-left: 24px; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline li {
+    position: relative;
+    padding-bottom: 14px;
+  }
+  .timeline li::before {
+    content: "";
+    position: absolute;
+    left: -22px;
+    top: 7px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1.5px var(--primary);
+  }
+  .timeline li .time {
+    font-weight: 700;
+    color: var(--primary-dark);
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  .timeline li .activity {
+    font-size: 14px;
+    color: var(--text);
+  }
+  .timeline li .note {
+    font-size: 12.5px;
+    color: var(--text-light);
+    margin-top: 3px;
+    padding-left: 0;
+  }
+  .day-tags {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  .tag-senior { background: #fff8e1; color: var(--senior); }
+  .tag-teen { background: #e3f2fd; color: var(--teen); }
+  .tag-warn { background: #fff0ed; color: var(--warning); }
+  .tag-ok { background: #e6f9f1; color: var(--success); }
+
+  .hotel-box {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: #f5f3f0;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+    font-size: 13px;
+  }
+  .hotel-box strong { color: var(--accent); }
+
+  /* Care section */
+  .care-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .care-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px;
+    border-top: 4px solid;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .care-card.senior { border-top-color: var(--senior); }
+  .care-card.teen { border-top-color: var(--teen); }
+  .care-card h3 {
+    font-size: 17px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .care-card ul { list-style: none; padding-left: 0; }
+  .care-card li {
+    padding: 6px 0;
+    font-size: 13.5px;
+    border-bottom: 1px dashed var(--border);
+    padding-left: 18px;
+    position: relative;
+  }
+  .care-card li::before {
+    content: "•";
+    position: absolute;
+    left: 4px;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .care-card li:last-child { border-bottom: none; }
+
+  /* Checklist */
+  .checklist {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .checklist table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .checklist th, .checklist td {
+    padding: 9px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist th {
+    background: #f5f3f0;
+    font-weight: 600;
+    color: var(--text-light);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .checklist tr:hover { background: #faf8f5; }
+  .status-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+  .status-urgent { background: #ffe0e0; color: #d63031; }
+  .status-soon { background: #fff3cd; color: #856404; }
+  .status-done { background: #d4edda; color: #155724; }
+
+  /* Budget */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    font-size: 13.5px;
+  }
+  .budget-table th, .budget-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .budget-table th {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .budget-table tr:last-child td {
+    font-weight: 700;
+    background: #fff4ed;
+    color: var(--primary-dark);
+    font-size: 15px;
+    border-bottom: none;
+  }
+  .budget-table .amt { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* Packing */
+  .packing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .packing-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .packing-card h4 {
+    font-size: 14px;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 6px;
+  }
+  .packing-card ul { list-style: none; font-size: 13px; }
+  .packing-card li { padding: 3px 0; padding-left: 16px; position: relative; }
+  .packing-card li::before {
+    content: "□";
+    position: absolute;
+    left: 0;
+    color: var(--text-light);
+  }
+
+  /* Alert box */
+  .alert {
+    background: #fff8e1;
+    border-left: 4px solid #ffa000;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  .alert strong { color: #e65100; }
+  .alert ul { margin-top: 8px; padding-left: 20px; }
+  .alert li { margin-bottom: 4px; }
+
+  /* Weather */
+  .weather-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .weather-chip {
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 720px) {
+    .care-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 24px; }
+    .container { padding: 20px 12px 40px; }
+  }
+  @media print {
+    .hero { background: #c8531b !important; -webkit-print-color-adjust: exact; }
+    .day-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 12px; }
+    .section { page-break-inside: avoid; }
+    .day-card { page-break-inside: avoid; }
+  }
+</style>
 </head>
 <body>
-    <h1>天津2天2晚家庭完整行程单（含谦祥益相声）</h1>
-    <div class="info-card">
-        <p><strong>👨‍👩‍👧出行人员：</strong>70多岁老人 + 初中生</p>
-        <p><strong>🏨住宿：</strong>小白楼亚朵酒店（地铁1号线小白楼站）</p>
-        <p><strong>⏰时间：</strong>周一中午抵达｜周三中午天津站坐城际去北京</p>
-        <p><strong>🎯核心原则：</strong>中午强制回酒店午休；景点之间优先打车；少走路；不赶场；累就直接舍弃景点</p>
-        <p><strong>🚄高铁提醒：</strong>周三买天津站→北京南C字头城际高铁，车程约30分钟；酒店打车到天津站约15‑20分钟，建议11:00从酒店出发。</p>
-        <div class="tip-blue">
-            <p>🎙️谦祥益相声茶馆｜保利广场店（南市）<br/>
-            推荐选<strong>周二14:30下午场</strong>，时长约2小时，内容绿色适合老人学生；提前线上购票，初中生需要购票，1.2米以上全部凭票入场，建议提前40分钟到场选座。</p>
-        </div>
+
+<div class="hero">
+  <h1>京津六日家庭游</h1>
+  <div class="subtitle">深圳 → 天津 → 北京 → 深圳</div>
+  <div class="dates">2026年8月17日（周一）— 8月22日（周六） · 六天五晚</div>
+  <div class="family-tags">
+    <span>夫妻二人</span>
+    <span>70岁老人</span>
+    <span>初中生</span>
+    <span>共4人</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 概览 -->
+  <div class="section">
+    <div class="section-title"><span class="num">0</span>行程概览</div>
+    <div class="overview-grid">
+      <div class="overview-card">
+        <div class="label">总天数</div>
+        <div class="value">6天5晚</div>
+        <div class="detail">8/17 周一 — 8/22 周六</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">城市</div>
+        <div class="value">天津 + 北京</div>
+        <div class="detail">双城联动 + 环球影城</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">住宿</div>
+        <div class="value">3家酒店</div>
+        <div class="detail">亚朵·康莱德·亚朵</div>
+      </div>
+      <div class="overview-card">
+        <div class="label">预算估算</div>
+        <div class="value">¥1.5–1.8万</div>
+        <div class="detail">4人含交通食宿门票</div>
+      </div>
     </div>
 
-    <h2>📅Day1 周一｜抵达·租界洋楼+海河夜景</h2>
-    <table>
+    <div class="alert">
+      <strong>⚠ 重点提醒</strong>
+      <ul>
+        <li><strong>8/20 御仙都 vs 德云社时间冲突</strong>：御仙都在海淀远大路，距德云社广德楼（前门）打车50–70分钟。德云社14:00场约16:30散场，赶17:00御仙都紧张。建议改"老舍茶馆"（前门步行可达，京味晚餐+京剧）。</li>
+        <li><strong>预订清单必须这两天完成</strong>：国博免费票、环球影城优速通、德云社/谦祥益大麦票、天坛/颐和园门票——暑假全部秒空。</li>
+        <li><strong>8月京津天气</strong>：30–33°C，闷热多雷阵雨。带折叠伞、防晒、帽子、速干衣。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Day 1 -->
+  <div class="section">
+    <div class="section-title"><span class="num">1</span>逐日行程</div>
+
+    <div class="day-card day-1">
+      <div class="day-header">
+        <div class="left">
+          <div class="day-num">1</div>
+          <div>
+            <div class="day-title">8/17 周一 · 抵达天津</div>
+            <div class="day-meta">轻松适应日 · 倒时差养精神</div>
+          </div>
+        </div>
+        <div class="day-route">✈ 深圳→天津 CA2818 08:25–11:30</div>
+      </div>
+      <div class="day-body">
+        <ul class="timeline">
+          <li><span class="time">07:00</span><span class="activity">深圳宝安机场集合，办登机</span></li>
+          <li><span class="time">08:25</span><span class="activity">CA2818 起飞</span></li>
+          <li><span class="time">11:30</span><span class="activity">落地天津滨海机场，打车前往酒店（约40分钟，¥80–100）</span></li>
+          <li><span class="time">13:00</span><span class="activity">到达亚朵（五大道小白楼店），寄存行李/办理入住</span></li>
+          <li><span class="time">13:30</span><span class="activity"><strong>午餐</strong>：附近天津菜馆，尝特色（推荐：狗不理包子、耳朵眼炸糕、煎饼馃子、锅塌里脊）</span></li>
+          <li><span class="time">15:00</span><span class="activity">五大道散步 + 观光马车（约¥40/人，40分钟一圈，覆盖230+欧式建筑，<strong>老人全程坐车不累</strong>）</span></li>
+          <li><span class="time">16:30</span><span class="activity">咖啡馆小憩（意式风情区方向步行可达）</span></li>
+          <li><span class="time">18:00</span><span class="activity"><strong>晚餐</strong>：登瀛楼或起士林，老牌津菜，环境安静适合老人</span></li>
+          <li><span class="time">19:30</span><span class="activity">回酒店休息</span></li>
+        </ul>
+        <div class="day-tags">
+          <span class="tag tag-senior">老人：马车观光免步行</span>
+          <span class="tag tag-teen">孩子：尝新鲜小吃</span>
+          <span class="tag tag-ok">强度：低</span>
+        </div>
+        <div class="hotel-box"><strong>住宿</strong>：亚朵酒店（五大道小白楼店）</div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card day-2">
+      <div class="day-header">
+        <div class="left">
+          <div class="day-num">2</div>
+          <div>
+            <div class="day-title">8/18 周二 · 天津深度游</div>
+            <div class="day-meta">文化+游船+相声，节奏舒缓</div>
+          </div>
+        </div>
+        <div class="day-route">天津市内</div>
+      </div>
+      <div class="day-body">
+        <ul class="timeline">
+          <li><span class="time">08:00</span><span class="activity">酒店早餐</span></li>
+          <li><span class="time">09:00</span><span class="activity">步行/打车至<strong>海河码头</strong>，乘海河游船（约50分钟，¥80/人，全程坐船赏两岸建筑，<strong>老人零负担</strong>）</span></li>
+          <li><span class="time">10:20</span><span class="activity"><strong>意式风情区</strong>散步（原意租界，平地砖路，咖啡店多可随时歇脚，拍照出片）</span></li>
+          <li><span class="time">11:30</span><span class="activity">途经开滦矿务局大楼、梁启超饮冰室（外观）</span></li>
+          <li><span class="time">12:00</span><span class="activity"><strong>午餐</strong>：古文化街附近，天津菜（八珍豆腐、罾蹦鲤鱼、贴饽饽熬小鱼）</span></li>
+          <li><span class="time">13:30</span><span class="activity"><strong>回酒店午休</strong>（必须，老人充电2小时）</span></li>
+          <li><span class="time">15:30</span><span class="activity">打车前往保利国际喜剧场（谦祥益相声场地）</span></li>
+          <li><span class="time">16:30</span><span class="activity"><strong>谦祥益相声</strong>（保利店，约1.5–2小时，提前大麦购票）</span>
+            <div class="note">老人最爱环节，孩子也能听懂部分段子，提前买好瓜子茶水</div>
+          </li>
+          <li><span class="time">18:30</span><span class="activity"><strong>晚餐</strong>：附近简餐（南市食品街或酒店周边）</span></li>
+          <li><span class="time">20:00</span><span class="activity">回酒店</span></li>
+        </ul>
+        <div class="day-tags">
+          <span class="tag tag-senior">老人：游船+午休+相声</span>
+          <span class="tag tag-teen">孩子：意式风情区拍照</span>
+          <span class="tag tag-ok">强度：中</span>
+        </div>
+        <div class="hotel-box"><strong>住宿</strong>：亚朵酒店（五大道小白楼店）</div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card day-3">
+      <div class="day-header">
+        <div class="left">
+          <div class="day-num">3</div>
+          <div>
+            <div class="day-title">8/19 周三 · 赴京 + 国博</div>
+            <div class="day-meta">城际高铁 + 文化重头戏</div>
+          </div>
+        </div>
+        <div class="day-route">🚄 天津→北京南 C2562 09:42</div>
+      </div>
+      <div class="day-body">
+        <ul class="timeline">
+          <li><span class="time">07:00</span><span class="activity">酒店早餐，收拾行李退房</span></li>
+          <li><span class="time">08:30</span><span class="activity">打车去天津站（约15分钟）</span></li>
+          <li><span class="time">09:42</span><span class="activity">C2562 城际高铁出发（约30分钟到北京南）</span></li>
+          <li><span class="time">10:30</span><span class="activity">抵达北京南站，打车前往康莱德酒店寄存行李</span></li>
+          <li><span class="time">11:30</span><span class="activity"><strong>午餐</strong>：国贸/建外SOHO附近（推荐：小吊梨汤、京味斋）</span></li>
+          <li><span class="time">13:30</span><span class="activity"><strong>国家博物馆</strong>（需提前7天微信公众号"国家博物馆"预约免费票）</span>
+            <div class="note">重点看：古代中国基本陈列（后母戊鼎、四羊方尊），约2.5小时。馆内有电梯和无障碍通道，老人友好。孩子可带研学任务单。</div>
+          </li>
+          <li><span class="time">16:30</span><span class="activity">出馆，打车回康莱德办理入住</span></li>
+          <li><span class="time">17:30</span><span class="activity">酒店休整</span></li>
+          <li><span class="time">19:00</span><span class="activity"><strong>晚餐</strong>：东来顺涮肉（国贸店），铜锅涮羊肉，老人吃得动</span></li>
+          <li><span class="time">20:30</span><span class="activity">回酒店</span></li>
+        </ul>
+        <div class="day-tags">
+          <span class="tag tag-senior">老人：国博有电梯</span>
+          <span class="tag tag-teen">孩子：课本文物实景</span>
+          <span class="tag tag-warn">需提前7天预约国博</span>
+        </div>
+        <div class="hotel-box"><strong>住宿</strong>：北京康莱德酒店（国贸/建国门区域）</div>
+      </div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="day-card day-4">
+      <div class="day-header">
+        <div class="left">
+          <div class="day-num">4</div>
+          <div>
+            <div class="day-title">8/20 周四 · 天坛 + 德云社 + 京味晚餐</div>
+            <div class="day-meta">换酒店 + 文化密集日</div>
+          </div>
+        </div>
+        <div class="day-route">🚕 康莱德→亚朵（前门大栅栏）</div>
+      </div>
+      <div class="day-body">
+        <ul class="timeline">
+          <li><span class="time">08:00</span><span class="activity">退房康莱德，打车前往亚朵（前门大栅栏店）寄存行李（约30分钟）</span></li>
+          <li><span class="time">09:00</span><span class="activity"><strong>天坛公园</strong>（联票¥34/人，提前公众号预约）</span>
+            <div class="note">重点：祈年殿 → 回音壁 → 圜丘。公园内多树荫座椅，老人可歇。约2小时。</div>
+          </li>
+          <li><span class="time">11:30</span><span class="activity"><strong>午餐</strong>：老北京炸酱面（前门附近，方砖厂58号炸酱面）</span></li>
+          <li><span class="time">13:00</span><span class="activity">办理亚朵入住，午休1小时</span></li>
+          <li><span class="time">14:00</span><span class="activity"><strong>德云社广德楼</strong>相声（前门西河沿，提前大麦购票）</span>
+            <div class="note">约2.5小时，至16:30散场。广德楼是德云社最老剧场，京味十足。</div>
+          </li>
+          <li><span class="time">16:30</span><span class="activity">大栅栏老字号逛街（内联升、瑞蚨祥、张一元，轻量散步）</span></li>
+          <li><span class="time">17:30</span><span class="activity"><strong>晚餐</strong>（二选一）：</span>
+            <div class="note"><strong>方案A（推荐）</strong>：老舍茶馆（前门西大街3号楼），京味晚餐+京剧/相声综合场，步行10分钟可达<br>
+            <strong>方案B（原计划）</strong>：御仙都皇家菜博物馆（海淀远大路），需打车50分钟，赶17:00有压力，建议改日或改场</div>
+          </li>
+          <li><span class="time">20:00</span><span class="activity">回酒店</span></li>
+        </ul>
+        <div class="day-tags">
+          <span class="tag tag-senior">老人：天坛多座椅</span>
+          <span class="tag tag-teen">孩子：回音壁互动</span>
+          <span class="tag tag-warn">御仙都冲突需决策</span>
+        </div>
+        <div class="hotel-box"><strong>住宿</strong>：亚朵酒店（前门大栅栏店）</div>
+      </div>
+    </div>
+
+    <!-- Day 5 -->
+    <div class="day-card day-5">
+      <div class="day-header">
+        <div class="left">
+          <div class="day-num">5</div>
+          <div>
+            <div class="day-title">8/21 周五 · 环球影城</div>
+            <div class="day-meta">全天畅玩 · 老人可半日</div>
+          </div>
+        </div>
+        <div class="day-route">🎢 北京环球度假区</div>
+      </div>
+      <div class="day-body">
+        <ul class="timeline">
+          <li><span class="time">08:00</span><span class="activity">酒店早餐，打车前往环球影城（约50分钟，¥120–150）</span></li>
+          <li><span class="time">09:30</span><span class="activity">抵达，安检入场（10:00开园，住环球酒店可提前1小时，本团非住客正常入园）</span></li>
+          <li><span class="time">10:00</span><span class="activity"><strong>优先刷热门</strong>（趁排队短）：</span>
+            <div class="note">① 哈利波特禁忌之旅（孩子必刷）<br>② 变形金刚火种源争夺战<br>③ 侏罗纪世界大冒险</div>
+          </li>
+          <li><span class="time">12:30</span><span class="activity"><strong>午餐</strong>：园区内三把扫帚酒吧（哈利波特区主题餐厅）</span></li>
+          <li><span class="time">13:30</span><span class="activity"><strong>老人友好项目</strong>（室内有空调，全坐着）：</span>
+            <div class="note">① 功夫熊猫盖世之地（沉浸式室内体验）<br>② 小黄人闹翻天（温和3D）<br>③ 未来水世界特技表演（剧场座椅）</div>
+          </li>
+          <li><span class="time">15:30</span><span class="activity"><strong>老人分流</strong>：若老人疲劳，一人陪回酒店休息，其余继续</span></li>
+          <li><span class="time">16:00</span><span class="activity">不可驯服（剧院级表演）+ 好声音巡演</span></li>
+          <li><span class="time">18:00</span><span class="activity"><strong>晚餐</strong>：环球城市大道（出园后免票区域，选择多）</span></li>
+          <li><span class="time">19:30</span><span class="activity">霍格沃茨城堡夜间灯光秀（如开放）</span></li>
+          <li><span class="time">20:30</span><span class="activity">打车回酒店</span></li>
+        </ul>
+        <div class="day-tags">
+          <span class="tag tag-senior">老人：功夫熊猫+剧场秀</span>
+          <span class="tag tag-teen">孩子：主场日！</span>
+          <span class="tag tag-warn">建议买优速通</span>
+        </div>
+        <div class="hotel-box"><strong>住宿</strong>：亚朵酒店（前门大栅栏店）</div>
+      </div>
+    </div>
+
+    <!-- Day 6 -->
+    <div class="day-card day-6">
+      <div class="day-header">
+        <div class="left">
+          <div class="day-num">6</div>
+          <div>
+            <div class="day-title">8/22 周六 · 颐和园 + 返深</div>
+            <div class="day-meta">轻量收尾 · 夜班软卧回家</div>
+          </div>
+        </div>
+        <div class="day-route">🚄 北京西→深圳北 D927 20:12</div>
+      </div>
+      <div class="day-body">
+        <ul class="timeline">
+          <li><span class="time">08:00</span><span class="activity">酒店早餐，退房寄存行李</span></li>
+          <li><span class="time">09:00</span><span class="activity">打车前往<strong>颐和园</strong>东宫门（约25分钟）</span></li>
+          <li><span class="time">09:30</span><span class="activity"><strong>颐和园轻量版路线</strong>（门票¥30 + 游船¥30）：</span>
+            <div class="note">东宫门入 → 仁寿殿 → 德和园 → 长廊（拍照打卡）→ 排云殿 → 佛香阁（远观即可）→ 乘昆明湖游船到苏州街码头 → 出北宫门。<strong>全程约2.5小时，游船省步行1公里</strong>。</div>
+          </li>
+          <li><span class="time">12:00</span><span class="activity"><strong>午餐</strong>：颐和园附近听鹂馆（宫廷菜，有座位适合老人）或回市区</span></li>
+          <li><span class="time">13:30</span><span class="activity">回前门取行李，打车去酒店寄存点取</span></li>
+          <li><span class="time">14:30</span><span class="activity"><strong>王府井</strong>购物（纪念品、稻香村点心礼盒、同仁堂）</span></li>
+          <li><span class="time">16:30</span><span class="activity">咖啡/茶歇，老人歇脚</span></li>
+          <li><span class="time">17:30</span><span class="activity"><strong>晚餐</strong>：王府井附近，护国寺小吃或便宜坊烤鸭（早吃，赶火车）</span></li>
+          <li><span class="time">18:30</span><span class="activity">打车前往北京西站（约40分钟，¥60–80）</span></li>
+          <li><span class="time">19:15</span><span class="activity">到达北京西站，取票/刷身份证进站，候车</span></li>
+          <li><span class="time">20:12</span><span class="activity">D927 软卧出发（次日早抵达深圳北，约次日08:00–09:00）</span></li>
+        </ul>
+        <div class="day-tags">
+          <span class="tag tag-senior">老人：游船代步</span>
+          <span class="tag tag-teen">孩子：王府井采购</span>
+          <span class="tag tag-ok">强度：中</span>
+        </div>
+        <div class="hotel-box"><strong>住宿</strong>：D927 高铁软卧（建议4人两包间）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 专项照护 -->
+  <div class="section">
+    <div class="section-title"><span class="num">2</span>家人专项照护</div>
+    <div class="care-grid">
+      <div class="care-card senior">
+        <h3>👵 70岁老人</h3>
+        <ul>
+          <li><strong>每天午休1.5–2小时</strong>（酒店午休，雷打不动）</li>
+          <li><strong>折叠拐杖凳</strong>随身，随时坐下歇脚</li>
+          <li><strong>防滑鞋 + 速干衣 + 速干裤</strong>，8月闷热易出汗</li>
+          <li><strong>保温杯</strong>装温水，景区冷水刺激肠胃</li>
+          <li><strong>常用药</strong>：降压药、速效救心丸、止泻药、晕车药</li>
+          <li><strong>门票优惠</strong>：65岁以上半价或免票，带身份证</li>
+          <li>每天步行总量控制在 <strong>3–4km 以内</strong></li>
+          <li>环球影城提供<strong>轮椅租赁</strong>（¥50/天），考虑备用</li>
+          <li>饮食偏软烂热，避免生冷辛辣</li>
+        </ul>
+      </div>
+      <div class="care-card teen">
+        <h3>👦 初中生</h3>
+        <ul>
+          <li><strong>课本彩蛋任务单</strong>：国博找后母戊鼎/四羊方尊，天坛测回音壁，颐和园数长廊彩画</li>
+          <li><strong>环球影城主场日</strong>：哈利波特+变形金刚优先</li>
+          <li><strong>适量预算</strong>（¥200–300）自主消费纪念品</li>
+          <li><strong>北京小吃打卡</strong>：豆汁、爆肚、糖葫芦（挑战味蕾）</li>
+          <li>每天给 30 分钟独处/手机时间（长途旅行减压）</li>
+          <li>相声/京剧前讲解背景故事，避免看不懂</li>
+          <li>颐和园可租讲解器或用手机AR导览</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 预订清单 -->
+  <div class="section">
+    <div class="section-title"><span class="num">3</span>预订清单（立即处理）</div>
+    <div class="checklist">
+      <table>
         <thead>
-            <tr>
-                <th>时间</th>
-                <th>行程</th>
-                <th>备注</th>
-            </tr>
+          <tr>
+            <th>项目</th>
+            <th>日期</th>
+            <th>渠道</th>
+            <th>紧迫度</th>
+          </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>13:00‑14:30</td>
-                <td>酒店办理入住 + 午餐</td>
-                <td>楼下海信广场就餐，推荐菜：八珍豆腐、山楂排骨、鲅鱼水饺，软烂适合老小</td>
-            </tr>
-            <tr>
-                <td>14:40‑17:20</td>
-                <td>小白楼 → 五大道</td>
-                <td>1.小白楼音乐厅、开封道步行街、起士林大楼拍照打卡<br>2.五大道<strong>坐官方观光电瓶车（必选），拒绝私人黑三轮车</strong>；重点停靠民园广场，座椅多方便老人休息，初中生看民国洋楼历史，不用全部小巷走完</td>
-            </tr>
-            <tr>
-                <td>17:40‑20:00</td>
-                <td>海河夜景（打车到津湾广场）</td>
-                <td>打卡津湾广场、解放桥、世纪钟，岸边全部平路<br>二选一：①岸边免费散步看灯光；②海河游船夜游，官方公众号购票，65岁以上老人、初中生可享优待票，带好证件，航程40‑50分钟；河面风大，备薄外套</td>
-            </tr>
-            <tr>
-                <td>20:00后</td>
-                <td>晚餐+返回酒店休息</td>
-                <td>津湾广场商场就餐，打车回酒店</td>
-            </tr>
+          <tr><td>✈ 机票 CA2818 深圳→天津</td><td>8/17</td><td>已订（南航官网）</td><td><span class="status-done">已完成</span></td></tr>
+          <tr><td>🚄 C2562 天津→北京南</td><td>8/19 09:42</td><td>12306</td><td><span class="status-urgent">立即订</span></td></tr>
+          <tr><td>🚄 D927 北京西→深圳北 软卧</td><td>8/22 20:12</td><td>12306（4张软卧）</td><td><span class="status-urgent">立即订</span></td></tr>
+          <tr><td>🏨 亚朵（五大道小白楼）</td><td>8/17–18</td><td>亚朵APP/携程</td><td><span class="status-soon">尽快</span></td></tr>
+          <tr><td>🏨 北京康莱德</td><td>8/19</td><td>希尔顿/携程</td><td><span class="status-soon">尽快</span></td></tr>
+          <tr><td>🏨 亚朵（前门大栅栏）</td><td>8/20–21</td><td>亚朵APP</td><td><span class="status-soon">尽快</span></td></tr>
+          <tr><td>🏛 国家博物馆免费票</td><td>8/19 13:30</td><td>公众号"国家博物馆"（提前7天放票）</td><td><span class="status-urgent">8/12前必订</span></td></tr>
+          <tr><td>🎢 环球影城门票+优速通</td><td>8/21</td><td>环球官方小程序/飞猪</td><td><span class="status-urgent">立即订</span></td></tr>
+          <tr><td>🎭 谦祥益相声（保利店）</td><td>8/18 16:30</td><td>大麦</td><td><span class="status-soon">尽快</span></td></tr>
+          <tr><td>🎭 德云社广德楼</td><td>8/20 14:00</td><td>大麦/德云社官方</td><td><span class="status-soon">尽快</span></td></tr>
+          <tr><td>🏯 天坛公园联票</td><td>8/20</td><td>公众号"天坛"</td><td><span class="status-soon">提前1–7天</span></td></tr>
+          <tr><td>🏯 颐和园门票+游船</td><td>8/22</td><td>公众号"颐和园"</td><td><span class="status-soon">提前1–7天</span></td></tr>
+          <tr><td>🍽 御仙都/老舍茶馆晚餐</td><td>8/20</td><td>电话/大众点评</td><td><span class="status-soon">提前3天</span></td></tr>
         </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 预算 -->
+  <div class="section">
+    <div class="section-title"><span class="num">4</span>预算估算（4人）</div>
+    <table class="budget-table">
+      <thead>
+        <tr><th>项目</th><th>明细</th><th class="amt">金额（¥）</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>✈ 机票</td><td>深圳→天津 4人 × ¥800</td><td class="amt">3,200</td></tr>
+        <tr><td>🚄 高铁</td><td>C2562 4×¥66 + D927软卧 4×¥750</td><td class="amt">3,264</td></tr>
+        <tr><td>🏨 住宿</td><td>亚朵津2晚 + 康莱德1晚 + 亚朵京2晚</td><td class="amt">5,500</td></tr>
+        <tr><td>🎢 环球影城</td><td>4日票 + 优速通 4×¥900</td><td class="amt">3,600</td></tr>
+        <tr><td>🎭 演出</td><td>相声×2场 + 老舍茶馆/御仙都</td><td class="amt">1,200</td></tr>
+        <tr><td>🏯 景点门票</td><td>国博免费 + 天坛 + 颐和园游船 + 海河游船</td><td class="amt">600</td></tr>
+        <tr><td>🚕 市内交通</td><td>打车+地铁 6天</td><td class="amt">1,500</td></tr>
+        <tr><td>🍽 餐饮</td><td>6天4人 × ¥150/天</td><td class="amt">3,600</td></tr>
+        <tr><td>🛍 购物备用</td><td>纪念品、零食、药</td><td class="amt">1,000</td></tr>
+        <tr><td colspan="2">合计（不含购物）</td><td class="amt">¥22,464</td></tr>
+      </tbody>
     </table>
+    <p style="font-size:13px;color:var(--text-light);margin-top:10px;">说明：软卧D927为新型长途动卧，4人正好两间包厢最舒适。环球优速通如不买可省¥2000。</p>
+  </div>
 
-    <h2>📅Day2 周二｜老城人文（两套方案二选一）</h2>
-    <div class="warn">⚠️硬性安排：<strong>方案A：上午逛老城，中午不回酒店午休，直接去谦祥益听下午场相声；听完相声之后再回酒店休息。体力偏弱就选方案B室内休闲版。</strong></div>
+  <!-- 装备清单 -->
+  <div class="section">
+    <div class="section-title"><span class="num">5</span>装备清单</div>
+    <div class="packing-grid">
+      <div class="packing-card">
+        <h4>老人专用</h4>
+        <ul>
+          <li>折叠拐杖凳</li>
+          <li>保温杯（温水）</li>
+          <li>常用药：降压/救心丸/止泻</li>
+          <li>防晒帽（宽檐）</li>
+          <li>薄外套（空调车/高铁冷）</li>
+          <li>防滑凉鞋</li>
+        </ul>
+      </div>
+      <div class="packing-card">
+        <h4>孩子专用</h4>
+        <ul>
+          <li>学生证（门票优惠）</li>
+          <li>充电宝（环球全天用）</li>
+          <li>研学任务单（国博/天坛）</li>
+          <li>零花钱（¥300现金）</li>
+          <li>耳机（独处时间用）</li>
+        </ul>
+      </div>
+      <div class="packing-card">
+        <h4>全家通用</h4>
+        <ul>
+          <li>身份证 ×4（高铁/景区必用）</li>
+          <li>折叠伞 ×2（8月雷阵雨）</li>
+          <li>防晒霜 + 驱蚊液</li>
+          <li>速干衣裤（闷热）</li>
+          <li>湿巾 + 纸巾</li>
+          <li>创可贴 + 晕车药</li>
+          <li>大容量背包 + 斜挎小包</li>
+        </ul>
+      </div>
+      <div class="packing-card">
+        <h4>电子设备</h4>
+        <ul>
+          <li>手机充电器 ×4</li>
+          <li>充电宝（≥10000mAh）</li>
+          <li>相机/手机云台</li>
+          <li>多口USB转换器</li>
+          <li>高铁用耳机</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-    <h3>🅰方案A｜经典老城+谦祥益相声（老人体力尚可，历史民俗+现场相声，适合初中生研学）</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>时间</th>
-                <th>行程</th>
-                <th>备注</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>09:00‑10:40</td>
-                <td>意大利风情区（打车）</td>
-                <td>大片欧式洋楼，平路、长椅多；简单闲逛，梁启超故居外观打卡，不用挨个进馆</td>
-            </tr>
-            <tr>
-                <td>10:50‑12:20</td>
-                <td>打车前往古文化街</td>
-                <td>浅逛主街即可，不必久留；看泥人张、杨柳青年画，尝耳朵眼炸糕；景区内餐馆性价比低，简单吃小吃即可</td>
-            </tr>
-            <tr>
-                <td>12:20‑13:40</td>
-                <td>午饭，打车到谦祥益保利广场店</td>
-                <td>保利广场商场内吃饭，吃完直接上楼4楼谦祥益，少赶路</td>
-            </tr>
-            <tr>
-                <td>14:30‑16:30</td>
-                <td>谦祥益相声茶馆（下午场）</td>
-                <td>时长约2小时；建议提前40分钟到场，可点茶水瓜子；初中生必须购票，提前线上买好票；内容健康适合老人孩子</td>
-            </tr>
-            <tr>
-                <td>16:40‑18:00</td>
-                <td>打车回酒店休息</td>
-                <td>听完相声回酒店休整，不再安排瓷房子、西开教堂，减少走路；体力特别充足可自行再加，不做强制</td>
-            </tr>
-            <tr>
-                <td>18:00之后</td>
-                <td>晚餐，返回酒店休息</td>
-                <td>小白楼/海信广场附近就餐</td>
-            </tr>
-        </tbody>
-    </table>
+  <!-- 天气 -->
+  <div class="section">
+    <div class="section-title"><span class="num">6</span>天气与应急</div>
+    <div class="overview-card" style="border-left-color: #1565c0;">
+      <div class="label">8月17–22日 京津天气</div>
+      <div class="value">30–33°C · 闷热多雨</div>
+      <div class="detail">紫外线强，午后多雷阵雨</div>
+      <div class="weather-row">
+        <span class="weather-chip">☀ 防晒SPF50+</span>
+        <span class="weather-chip">☂ 折叠伞随身</span>
+        <span class="weather-chip">💧 每日饮水2L</span>
+        <span class="weather-chip">👟 防滑鞋</span>
+      </div>
+    </div>
+    <div style="margin-top:14px;padding:14px;background:#fff4ed;border-radius:8px;font-size:13.5px;">
+      <strong style="color:var(--primary-dark);">应急预案</strong><br>
+      • 雨天备用：国博、环球影城（室内为主）可替换户外行程<br>
+      • 老人不适：各酒店近三甲医院（天津：总医院；北京：协和/同仁）<br>
+      • 环球影城轮椅租赁：入园后左手服务中心，押金¥500<br>
+      • 高铁改签：D927 如遇晚点，12306 APP一键改签
+    </div>
+  </div>
 
-    <h3>🅱方案B｜室内休闲版（怕晒、老人体力一般优先，空调充足少暴晒，无相声）</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>时间</th>
-                <th>行程</th>
-                <th>备注</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>09:30‑12:00</td>
-                <td>天津文化中心（打车/地铁）</td>
-                <td>天津博物馆，公众号提前预约，免费；周二正常开放，周一闭馆。室内无障碍，看天津近代历史，老人和初中生都合适；旁边银河广场简单散步</td>
-            </tr>
-            <tr>
-                <td>12:00‑13:30</td>
-                <td>文化中心商圈午餐</td>
-                <td>商场就餐，环境舒适</td>
-            </tr>
-            <tr>
-                <td>13:30‑15:30</td>
-                <td>返回酒店午休</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>16:00‑18:00</td>
-                <td>泰安道五大院步行闲逛</td>
-                <td>离酒店很近，人少安静洋楼街区，随时可以回酒店休息</td>
-            </tr>
-            <tr>
-                <td>18点后</td>
-                <td>晚餐，回酒店休息</td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2>📅Day3 周三｜上午轻逛，中午离开前往北京</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>时间</th>
-                <th>行程</th>
-                <th>备注</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>08:30‑09:30</td>
-                <td>早餐</td>
-                <td>酒店自助早餐即可，想吃锅巴菜、老豆腐楼下就有简餐店，不用专门排队</td>
-            </tr>
-            <tr>
-                <td>09:40‑10:40</td>
-                <td>就近轻逛二选一</td>
-                <td>①泰安道五大院散步拍照；②直接回房间收拾行李，不外出</td>
-            </tr>
-            <tr>
-                <td>11:00</td>
-                <td>酒店出发打车前往天津站</td>
-                <td>预留路上时间，搭乘城际高铁去往北京南</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2>🍴推荐吃饭清单（靠近酒店，老小友好，避开景区坑店）</h2>
-    <ul>
-        <li><strong>登瀛楼（海河旗舰店）</strong>：距离小白楼约1km，老牌津菜馆，八珍豆腐、全爆，菜品软烂适合老人</li>
-        <li><strong>昱德来菜馆</strong>：距离小白楼1.1km，本地人常去，性价比高，八珍豆腐、酱爆圆白菜，口味温和不刺激</li>
-        <li><strong>海信广场内餐饮</strong>：多种菜系选择，环境好，逛完小白楼直接就餐</li>
-    </ul>
-
-    <h2>✨出行重要贴士</h2>
-    <ul>
-        <li><strong>交通</strong>：景点之间优先打车，天津市区打车不贵；五大道只坐官方观光电瓶车，拒绝私人三轮车，避免乱加价。</li>
-        <li><strong>预约证件</strong>：天津博物馆公众号提前预约；海河游船官方小程序购票；谦祥益相声提前线上购票，初中生需要购票，带好证件。</li>
-        <li><strong>谦祥益提示</strong>：保利广场店4楼；周二下午14:30场优先，时长约2小时；票售出不退换，尽量提前到场选座，不建议晚上场，老人休息要紧。</li>
-        <li><strong>避坑提醒</strong>：古文化街、意风区景区内部饭店慎选；天津之眼不建议坐，排队时间很长，对岸拍照打卡就足够。</li>
-        <li><strong>体力管理</strong>：方案A听相声当天上午连续走路，老人如果感觉疲惫，可直接删减意风区，直奔古文化街+相声；累了直接放弃景点。</li>
-        <li><strong>随身物品</strong>：老人常备药，夏季做好防晒，海河夜游带上薄外套。</li>
-    </ul>
+</div>
 
 </body>
 </html>
